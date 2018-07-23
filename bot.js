@@ -1,5 +1,6 @@
-var Twit = require(‘twit’);
-var TwitterBot = require(‘node - twitterbot’).TwitterBot;
+const Twit = require('twit');
+const TwitterBot = require('node-twitterbot').TwitterBot;
+const moment = require('moment-timezone');
 
 var Bot = new TwitterBot({
   consumer_key: process.env.BOT_CONSUMER_KEY,
@@ -8,22 +9,13 @@ var Bot = new TwitterBot({
   access_token_secret: process.env.BOT_ACCESS_TOKEN_SECRET
 });
 
-var phraseArray = ["hey twitter",
-  "im tweeting",
-  "tweet tweet",
-  "tweetstorm time... 1/22",
-  "plz RT v important",
-  "delete ur account",
-  "it me",
-  "same",
-  "#dogpants go on 4 legs!!",
-  "#thedress is blue and black"
-];
+var deadline = moment("20181015").tz("Australia/Sydney").format();
+var now = moment().tz("Australia/Sydney").format();
+var deadlineMoment = moment(deadline);
+var nowMoment = moment(now);
+var remaining = deadlineMoment.diff(nowMoment, "days");
 
-function chooseRandom(myArray) {
-  return myArray[Math.floor(Math.random() * myArray.length)];
-}
-
-var phrase = chooseRandom(phraseArray) + ", " + chooseRandom(phraseArray);
+var phrase = remaining + " days left to opt out."
 
 Bot.tweet(phrase);
+console.log('Tweeted!', phrase);
