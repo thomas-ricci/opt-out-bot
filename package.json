@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "moment": "^2.22.2",
-    "twitter": "^1.7.1"
+    "node-twitterbot": "^0.2.2",
+    "twit": "^2.2.11"
   }
 }
