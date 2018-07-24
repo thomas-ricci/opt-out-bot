@@ -20,5 +20,5 @@ if (remaining === 1) {
   phrase = remaining + " days left to opt out.";
 }
 
-Bot.tweet(phrase + Math.random());
+Bot.tweet(phrase);
 console.log('Tweet sent:', phrase);
