@@ -6,4 +6,4 @@ Remaining days is calculated with the amazing [moment.js][1] library, and the bo
 
 Twitter avatar/profile picture icon belongs to the fantastic Susan Kare.
 
-[1]:	https://expressjs.com/
+[1]: https://momentjs.com/
