@@ -15,9 +15,9 @@ let deadline = moment(moment("20181015").tz("Australia/Sydney").format());
 let now = moment(moment().tz("Australia/Sydney").format());
 let remaining = deadline.diff(now, "days");
 if (remaining === 1) {
-  phrase = remaining + " day left to opt out.";
+  phrase = remaining + " day left to opt out of #MyHealthRecord.";
 } else {
-  phrase = remaining + " days left to opt out.";
+  phrase = remaining + " days left to opt out of #MyHealthRecord";
 }
 
 Bot.tweet(phrase);
