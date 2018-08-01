@@ -8,6 +8,7 @@ let Bot = new TwitterBot({
   access_token: process.env.BOT_ACCESS_TOKEN,
   access_token_secret: process.env.BOT_ACCESS_TOKEN_SECRET
 });
+// test
 
 let phrase = '';
 let url = "https://bit.ly/2KXekd9";
