@@ -11,7 +11,7 @@ let Bot = new TwitterBot({
 
 let phrase = '';
 let url = "https://bit.ly/2KXekd9";
-let deadline = moment(moment("20181015").tz("Australia/Sydney").format());
+let deadline = moment(moment("20181115").tz("Australia/Sydney").format());
 let now = moment(moment().tz("Australia/Sydney").format());
 let remaining = deadline.diff(now, "days");
 if (remaining === 1) {
