@@ -11,14 +11,29 @@ let Bot = new TwitterBot({
 
 let phrase = '';
 let url = "https://bit.ly/2KXekd9";
-let deadline = moment(moment("20181115").tz("Australia/Sydney").format());
+let deadline = moment(moment("20190131").tz("Australia/Sydney").format());
 let now = moment(moment().tz("Australia/Sydney").format());
 let remaining = deadline.diff(now, "days");
-if (remaining === 1) {
-  phrase = remaining + " day left to #OptOut of #MyHealthRecord.";
-} else {
-  phrase = remaining + " days left to #OptOut of #MyHealthRecord.";
-}
 
-Bot.tweet(phrase);
-console.log('Tweet sent:', phrase);
+if (remaining >= 0) {
+  switch(remaining) {
+    case 0:
+    phrase = "The opt-out period has ended! If you didn't opt-out, A My Health Record will be created for you. To cancel your record: http://bit.ly/2Pu0JMA. This bot will now self-destruct. Cheers.";
+    break;
+    case 1:
+    phrase = `${remaining} day left to #OptOut of #MyHealthRecord http://bit.ly/mhroptout`;
+    break;
+    default:
+    phrase = `${remaining} days left to #OptOut of #MyHealthRecord http://bit.ly/mhroptout`;
+    break;
+  }
+
+  if (remaining === 1) {
+    phrase = remaining + " day left to #OptOut of #MyHealthRecord.";
+  } else {
+    phrase = remaining + " days left to #OptOut of #MyHealthRecord.";
+  }
+  
+  Bot.tweet(phrase);
+  console.log('Tweet sent:', phrase);
+}
