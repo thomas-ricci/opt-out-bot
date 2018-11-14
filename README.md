@@ -1,6 +1,6 @@
 # @optoutbot
 
-A Twitter bot that tweets how many days Australians have to opt out of the My Health Record program. Deadline is November 15 2018.
+A Twitter bot that tweets how many days Australians have to opt out of the My Health Record program. Deadline is now 31 January 2019. Previously 15 November 2018, and before that October 15 2018.
 
 Remaining days is calculated with the amazing [moment.js][1] library, and the bot lives on a Heroku server, somewhere in the world.
 
