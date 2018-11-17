@@ -28,12 +28,6 @@ if (remaining >= 0) {
     break;
   }
 
-  if (remaining === 1) {
-    phrase = remaining + " day left to #OptOut of #MyHealthRecord.";
-  } else {
-    phrase = remaining + " days left to #OptOut of #MyHealthRecord.";
-  }
-  
   Bot.tweet(phrase);
   console.log('Tweet sent:', phrase);
 }
