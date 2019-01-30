@@ -11,23 +11,27 @@ let Bot = new TwitterBot({
 
 let phrase = '';
 let url = "https://bit.ly/2KXekd9";
-let deadline = moment(moment("20190131").tz("Australia/Sydney").format());
-let now = moment(moment().tz("Australia/Sydney").format());
-let remaining = deadline.diff(now, "days");
+let now = moment().tz("Australia/Sydney");
+let deadline = moment('20190131').tz("Australia/Sydney");
+let remainingInt = deadline.diff(now, "days");
+let remainingFloat = deadline.diff(now, "days", true);
 
-if (remaining >= 0) {
-  switch(remaining) {
-    case 0:
-    phrase = "The opt-out period has ended! If you didn't opt-out, A My Health Record will be created for you. To cancel your record: http://bit.ly/2Pu0JMA. This bot will now self-destruct. Cheers.";
-    break;
+if (remainingFloat > 0) {
+  switch (remainingInt) {
     case 1:
-    phrase = `${remaining} day left to #OptOut of #MyHealthRecord http://bit.ly/mhroptout`;
-    break;
+      phrase = `${remainingInt} day left to #OptOut of #MyHealthRecord http://bit.ly/mhroptout`;
+      break;
     default:
-    phrase = `${remaining} days left to #OptOut of #MyHealthRecord http://bit.ly/mhroptout`;
-    break;
+      phrase = `${remainingInt} days left to #OptOut of #MyHealthRecord http://bit.ly/mhroptout`;
+      break;
   }
+} else if (remainingFloat < 0 && remainingFloat > -1) { // deadline day
+  phrase = "Last day to #OptOut of #MyHealthRecord http://bit.ly/mhroptout";
+} else if (remainingFloat < -1) {
+  phrase = "The opt-out period has ended! If you didn't opt-out, A #MyHealthRecord will be created for you. To cancel your record: http://bit.ly/2Pu0JMA. This bot will now self-destruct. Cheers.";
+}
 
+if (remainingFloat > -2) {
   Bot.tweet(phrase);
   console.log('Tweet sent:', phrase);
 }
